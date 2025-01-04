@@ -1,3 +1,9 @@
+#### 1.5.33 January 4th 2025 ####
+- Safer formatting of assertion messages
+- Bump `NUnit` to [4.3.2](https://github.com/nunit/nunit/releases/tag/4.3.2)
+- Bump `NUnit.Analyzers` to [4.5.0](https://github.com/nunit/nunit.analyzers/releases/tag/4.5.0)
+- Bump `Akka.TestKit` to [1.5.33](https://github.com/akkadotnet/akka.net/releases/tag/1.5.33)
+
 #### 1.5.32 December 20th 2024 ####
 - Bump `Akka.TestKit` to [1.5.32](https://github.com/akkadotnet/akka.net/releases/tag/1.5.32)
 - Bump `NUnit3TestAdapter` to [4.6.0](https://github.com/nunit/nunit3-vs-adapter/releases/tag/V4.6.0)
