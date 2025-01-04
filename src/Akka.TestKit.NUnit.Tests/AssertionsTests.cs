@@ -12,12 +12,7 @@ namespace Akka.TestKit.NUnit.Tests
     [Parallelizable(ParallelScope.All)]
     public class AssertionsTests : TestKit
     {
-        private readonly NUnitAssertions _assertions;
-
-        public AssertionsTests()
-        {
-            _assertions = new NUnitAssertions();
-        }
+        private readonly NUnitAssertions _assertions = new();
 
         [Test]
         public void Fail_should_throw()
@@ -71,6 +66,31 @@ namespace Akka.TestKit.NUnit.Tests
         public void AssertEqualWithComparer_should_succeed_on_equal()
         {
             _assertions.AssertEqual(42, 4711, (x, y) => true);
+        }
+
+        [Test]
+        public void Assert_should_not_format_message_when_no_arguments_are_specified()
+        {
+            const string testMessage = "{Value} with different format placeholders {0}";
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(
+                    code: () => _assertions.Fail(testMessage),
+                    constraint: Throws.Exception.TypeOf<AssertionException>().And.Message.Contains(testMessage));
+                Assert.That(
+                    code: () => _assertions.AssertTrue(false, testMessage),
+                    constraint: Throws.Exception.TypeOf<AssertionException>().And.Message.Contains(testMessage));
+                Assert.That(
+                    code: () => _assertions.AssertFalse(true, testMessage),
+                    constraint: Throws.Exception.TypeOf<AssertionException>().And.Message.Contains(testMessage));
+                Assert.That(
+                    code: () => _assertions.AssertEqual(4, 2, testMessage),
+                    constraint: Throws.Exception.TypeOf<AssertionException>().And.Message.Contains(testMessage));
+                Assert.That(
+                    code: () => _assertions.AssertEqual(4, 2, (_, _) => false, testMessage),
+                    constraint: Throws.Exception.TypeOf<AssertionException>().And.Message.Contains(testMessage));
+            });
         }
     }
 }
