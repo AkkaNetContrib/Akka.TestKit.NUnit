@@ -30,7 +30,7 @@ jobs:
   windows-latest:
     name: windows-latest
     runs-on: windows-latest
-    
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4.1.1
@@ -57,11 +57,11 @@ jobs:
 
       - name: "dotnet pack"
         run: dotnet pack -c Release -o ./bin/nuget
-          
+
   ubuntu-latest:
     name: ubuntu-latest
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4.1.1
@@ -81,11 +81,11 @@ jobs:
 
       - name: "dotnet build"
         run: dotnet build -c Release
-      
+
       # .NET Framework tests can't run reliably on Linux, so we only do .NET Core
       - name: "dotnet test"
         shell: bash
-        run: dotnet test -c Release -f net6.0
+        run: dotnet test -c Release -f net8.0
 
       - name: "dotnet pack"
         run: dotnet pack -c Release -o ./bin/nuget
