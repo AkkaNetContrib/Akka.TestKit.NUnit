@@ -1,3 +1,7 @@
+#### 1.5.35 January 13th 2025 ####
+- Bump `Akka.TestKit` to [1.5.35](https://github.com/akkadotnet/akka.net/releases/tag/1.5.35)
+- Bump `NUnit.Analyzers` to [4.6.0](https://github.com/nunit/nunit.analyzers/releases/tag/4.6.0)
+
 #### 1.5.34 January 7th 2025 ####
 - Bump `Akka.TestKit` to [1.5.34](https://github.com/akkadotnet/akka.net/releases/tag/1.5.34)
 
